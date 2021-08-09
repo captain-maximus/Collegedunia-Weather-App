@@ -1,6 +1,6 @@
 import {HOME_ACTION_TYPES} from '../types';
 import api from '../../api';
-
+import moment from 'moment';
 export const fetchWeatherForcastData =
   (longitude, latitude) => async dispatch => {
     console.log('Fetching weather Action Called');
@@ -15,17 +15,24 @@ export const fetchWeatherForcastData =
       console.log(currentTemp, next5DayData);
       let {list} = next5DayData.data;
       let fiveDayData = [];
-      list.map((item) => {
-        
-      })
-      console.log(list)
+      let currentDate = '';
+      list.map(item => {
+        if (new Date(item.dt_txt).getDate() != currentDate) {
+          fiveDayData.push({
+            date: moment(item.dt_txt).format('dddd'),
+            temp: item.main.temp,
+          });
+        }
+        currentDate = new Date(item.dt_txt).getDate();
+      });
+      let nextFiveDayTemp = fiveDayData.splice(1);
       let todayWeather = {
         temp: currentTemp.data.main.temp,
         city: currentTemp.data.name,
       };
       dispatch({
         type: HOME_ACTION_TYPES.GETTING_DATA_SUCCESS,
-        payload: todayWeather,
+        payload: {todayWeather, nextFiveDayTemp},
       });
     } catch (err) {
       console.log('Fetch weather error');

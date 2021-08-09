@@ -5,10 +5,8 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   todayTempTextStyle: {
-    fontSize: 18,
     fontWeight: 'bold',
-    fontSize: 60
-    // color: 'rgba(0,0,0,0.7)',
+    fontSize: 60,
   },
   lineStyle: {
     width: '100%',
@@ -33,5 +31,15 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 25,
     letterSpacing: 2,
+  },
+  fiveDayTextStyle: {
+    fontSize: 18,
+    marginLeft: 30,
+  },
+  fiveDayTempTextStyle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginRight: 30,
+    color: 'rgba(0,0,0,0.7)',
   },
 });
