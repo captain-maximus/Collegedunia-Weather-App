@@ -3,12 +3,16 @@ import {View, Text, Platform, Alert} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import RNAndroidLocationEnabler from 'react-native-android-location-enabler';
 import {fetchWeatherForcastData} from '../../redux/home/actions';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import WeatherForcastScreen from '../weatherForcastScreen/WeatherForcastScreen';
+import Loader from '../../common/loader';
 
 const HomeScreen = () => {
-
   const dispatch = useDispatch();
 
+  const data = useSelector(state => state.home.data);
+
+  console.log(data)
   function getLocation() {
     if (Platform.OS == 'android') {
       getLocationPermissions();
@@ -73,11 +77,10 @@ const HomeScreen = () => {
     getLocation();
   }, []);
 
-  return (
-    <View>
-      <Text>HomeScreen</Text>
-    </View>
-  );
+  if (data) {
+    return <WeatherForcastScreen />;
+  }
+  return <Loader />;
 };
 
 export default HomeScreen;

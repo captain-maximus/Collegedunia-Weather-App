@@ -1,6 +1,6 @@
-import axios from 'axios';
+import {create} from 'apisauce';
 
-const instance = axios.create({
+const instance = create({
   baseURL: 'https://api.openweathermap.org',
 });
 

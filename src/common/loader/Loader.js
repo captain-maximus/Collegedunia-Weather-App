@@ -1,12 +1,16 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-
+import React from 'react';
+import {Text, View, Image} from 'react-native';
 const Loader = () => {
   return (
-    <View>
-      <Text></Text>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+      }}>
+      <Image source={require('../../assets/loader.gif')} resizeMode="center" />
     </View>
-  )
-}
-
-export default Loader
+  );
+};
+export default Loader;
