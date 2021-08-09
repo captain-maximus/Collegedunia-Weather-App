@@ -1,3 +1,3 @@
 export const HOME_ACTION_TYPES = {
-  
+  GETTING_DATA: 'GETTING_DATA',
 }

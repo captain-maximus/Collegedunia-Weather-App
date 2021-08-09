@@ -2,8 +2,13 @@ import React, {useEffect} from 'react';
 import {View, Text, Platform, Alert} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import RNAndroidLocationEnabler from 'react-native-android-location-enabler';
+import {fetchWeatherForcastData} from '../../redux/home/actions';
+import {useDispatch} from 'react-redux';
 
 const HomeScreen = () => {
+
+  const dispatch = useDispatch();
+
   function getLocation() {
     if (Platform.OS == 'android') {
       getLocationPermissions();
@@ -45,6 +50,7 @@ const HomeScreen = () => {
       position => {
         let {longitude, latitude} = position.coords;
         console.log(latitude, longitude);
+        dispatch(fetchWeatherForcastData(longitude, latitude));
       },
       error => {
         console.log(error);
