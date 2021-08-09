@@ -6,13 +6,15 @@ import {fetchWeatherForcastData} from '../../redux/home/actions';
 import {useDispatch, useSelector} from 'react-redux';
 import WeatherForcastScreen from '../weatherForcastScreen/WeatherForcastScreen';
 import Loader from '../../common/loader';
+import ErrorScreen from '../errorScreen/ErrorScreen';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
 
   const data = useSelector(state => state.home.data);
+  const error = useSelector(state => state.home.error);
 
-  console.log(data)
+  console.log(data);
   function getLocation() {
     if (Platform.OS == 'android') {
       getLocationPermissions();
@@ -79,6 +81,9 @@ const HomeScreen = () => {
 
   if (data) {
     return <WeatherForcastScreen />;
+  }
+  if (error) {
+    return <ErrorScreen getLocation={() => getLocation()} />;
   }
   return <Loader />;
 };
