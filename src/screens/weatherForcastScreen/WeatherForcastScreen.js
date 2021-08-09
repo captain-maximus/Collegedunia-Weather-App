@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-const MainScreen = () => {
+const WeatherForcastScreen = () => {
   return (
     <View>
       <Text></Text>
@@ -9,4 +9,4 @@ const MainScreen = () => {
   )
 }
 
-export default MainScreen
+export default WeatherForcastScreen
