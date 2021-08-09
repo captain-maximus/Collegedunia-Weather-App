@@ -42,4 +42,8 @@ export const styles = StyleSheet.create({
     marginRight: 30,
     color: 'rgba(0,0,0,0.7)',
   },
+  listContainerStyle: {
+    flex: 0.4,
+    justifyContent: 'flex-end',
+  }
 });

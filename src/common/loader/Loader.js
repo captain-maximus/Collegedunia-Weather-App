@@ -1,5 +1,8 @@
 import React from 'react';
 import {Text, View, Image} from 'react-native';
+import LottieView from 'lottie-react-native';
+import {styles} from './styles';
+
 const Loader = () => {
   return (
     <View
@@ -9,7 +12,12 @@ const Loader = () => {
         alignItems: 'center',
         backgroundColor: '#fff',
       }}>
-      <Image source={require('../../assets/loader.gif')} resizeMode="center" />
+      <LottieView
+        style={[styles.genericLoaderStyle, {aspectRatio: 3, flexGrow: 0.3}]}
+        source={require('../../assets/loader.json')}
+        resizeMode="contain"
+        autoPlay
+      />
     </View>
   );
 };

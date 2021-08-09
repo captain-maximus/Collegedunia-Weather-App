@@ -50,10 +50,7 @@ const WeatherForcastScreen = () => {
   const renderFiveDayForcast = () => {
     return (
       <View
-        style={{
-          flex: 0.4,
-          justifyContent: 'flex-end',
-        }}>
+        style={styles.listContainerStyle}>
         <FlatList
           data={data.nextFiveDayTemp}
           renderItem={_renderItem}
